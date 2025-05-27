@@ -1,18 +1,14 @@
 import ForgotPasswordClientPage from "@/components/forms/ForgetPasswordForm";
 
-
-
-
-
 export async function generateMetadata() {
   return {
-    title: "Forgot Password | GoodTrauma",
+    title: "Forgot Password | Kickoff",
     description:
-      "Forgot your password? Use this secure form to reset your GoodTrauma account credentials.",
+      "Forgot your password? Use this secure form to reset your Kickoff account credentials.",
     keywords: [
       "forgot password",
       "password reset",
-      "GoodTrauma account recovery",
+      "Kickoff account recovery",
       "reset credentials",
       "secure login",
     ],
@@ -22,30 +18,29 @@ export async function generateMetadata() {
     },
 
     openGraph: {
-      title: "Forgot Password | GoodTrauma",
-      description:
-        "Reset your GoodTrauma account password securely and quickly.",
-      url: "https://thegoodtraumaretreat.com/auth/forgot-password",
-      siteName: "GoodTrauma",
+      title: "Forgot Password | Kickoff",
+      description: "Reset your Kickoff account password securely and quickly.",
+      url: "https://theKickoffretreat.com/auth/forgot-password",
+      siteName: "Kickoff",
       type: "website",
       locale: "en_US",
       images: [
         {
-          url: "https://thegoodtraumaretreat.com/images/logo.png",
+          url: "https://theKickoffretreat.com/images/logo.png",
           width: 1200,
           height: 630,
-          alt: "GoodTrauma Forgot Password",
+          alt: "Kickoff Forgot Password",
         },
       ],
     },
 
     twitter: {
       card: "summary_large_image",
-      title: "Forgot Password | GoodTrauma",
+      title: "Forgot Password | Kickoff",
       description:
-        "Securely reset your GoodTrauma password to regain account access.",
-      creator: "@Thegoodtraumaretreat",
-      images: ["https://thegoodtraumaretreat.com/images/logo.png"],
+        "Securely reset your Kickoff password to regain account access.",
+      creator: "@TheKickoffretreat",
+      images: ["https://theKickoffretreat.com/images/logo.png"],
     },
   };
 }

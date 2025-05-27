@@ -2,12 +2,12 @@ import LoginForm from "../../../../components/forms/LoginForm";
 
 export async function generateMetadata() {
   return {
-    title: "Login | GoodTrauma",
+    title: "Login | Kickoff",
     description:
-      "Log in securely to access your GoodTrauma account and continue your healing journey.",
+      "Log in securely to access your Kickoff account and continue your healing journey.",
     keywords: [
       "login",
-      "GoodTrauma login",
+      "Kickoff login",
       "account access",
       "secure login",
       "user authentication",
@@ -18,30 +18,30 @@ export async function generateMetadata() {
     },
 
     openGraph: {
-      title: "Login | GoodTrauma",
+      title: "Login | Kickoff",
       description:
-        "Access your GoodTrauma account securely with your email and password.",
-      url: "https://thegoodtraumaretreat.com/auth/login",
-      siteName: "GoodTrauma",
+        "Access your Kickoff account securely with your email and password.",
+      url: "https://theKickoffretreat.com/auth/login",
+      siteName: "Kickoff",
       type: "website",
       locale: "en_US",
       images: [
         {
-          url: "https://thegoodtraumaretreat.com/images/logo.png",
+          url: "https://theKickoffretreat.com/images/logo.png",
           width: 1200,
           height: 630,
-          alt: "GoodTrauma Login",
+          alt: "Kickoff Login",
         },
       ],
     },
 
     twitter: {
       card: "summary_large_image",
-      title: "Login | GoodTrauma",
+      title: "Login | Kickoff",
       description:
-        "Securely log in to your GoodTrauma account to continue your personal growth journey.",
-      creator: "@Thegoodtraumaretreat",
-      images: ["https://thegoodtraumaretreat.com/images/logo.png"],
+        "Securely log in to your Kickoff account to continue your personal growth journey.",
+      creator: "@TheKickoffretreat",
+      images: ["https://theKickoffretreat.com/images/logo.png"],
     },
   };
 }

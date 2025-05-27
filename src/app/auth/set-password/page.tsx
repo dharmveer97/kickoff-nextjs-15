@@ -36,7 +36,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title: `Update Your Profile | ${config.siteName}`,
       description: `Edit your ${config.siteName} account info to keep your recovery experience personalized and up-to-date.`,
-      creator: "@Thegoodtraumaretreat",
+      creator: "@TheKickoffretreat",
       images: [`${config.siteUrl}/images/logo.png`],
     },
   };

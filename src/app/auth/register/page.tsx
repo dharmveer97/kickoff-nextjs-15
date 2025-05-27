@@ -5,12 +5,12 @@ export async function generateMetadata() {
   return {
     title: `Create Account | ${config.siteName}`,
     description:
-      "Join GoodTraumaRetreat — Create your account to access powerful tools, personalized support, and exclusive content.",
+      "Join KickoffRetreat — Create your account to access powerful tools, personalized support, and exclusive content.",
     keywords: [
       "sign up",
       "register",
       "create account",
-      "GoodTraumaRetreat membership",
+      "KickoffRetreat membership",
       "new user",
     ],
     robots: {
