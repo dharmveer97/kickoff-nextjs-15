@@ -1,11 +1,10 @@
 import { truncate, get } from "lodash";
 
-
 import config from "./config";
 
-const urlForImage =()=>{
-console.log("hello world")
-}
+const urlForImage = () => {
+  console.log("hello world");
+};
 
 function extractImages(data) {
   const listedImages =
@@ -44,7 +43,6 @@ function generateProductDescription(data) {
   }
   return config.description;
 }
-
 
 export function generateStaticPagesMetadata(data, path, type) {
   try {
