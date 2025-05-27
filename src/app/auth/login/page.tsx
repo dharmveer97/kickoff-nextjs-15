@@ -1,6 +1,6 @@
-import LoginForm from "../../../../components/forms/LoginForm";
+import LoginForm from "@/components/forms/LoginForm";
 
-export async function generateMetadata() {
+export function generateMetadata() {
   return {
     title: "Login | Kickoff",
     description:
@@ -46,6 +46,6 @@ export async function generateMetadata() {
   };
 }
 
-export default async function Page() {
+export default function Page() {
   return <LoginForm />;
 }

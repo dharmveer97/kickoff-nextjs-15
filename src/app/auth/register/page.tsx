@@ -1,7 +1,6 @@
-import SignUpForm from "../../../../components/forms/SignUpForm";
-import config from "../../../../utils/config";
-
-export async function generateMetadata() {
+import SignupForm from "@/components/forms/SignUpForm";
+import config from "@/utils/config";
+export function generateMetadata() {
   return {
     title: `Create Account | ${config.siteName}`,
     description:
@@ -41,6 +40,6 @@ export async function generateMetadata() {
   };
 }
 
-export default async function page() {
-  return <SignUpForm />;
+export default function page() {
+  return <SignupForm />;
 }

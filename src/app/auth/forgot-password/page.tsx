@@ -1,6 +1,6 @@
 import ForgotPasswordClientPage from "@/components/forms/ForgetPasswordForm";
 
-export async function generateMetadata() {
+export function generateMetadata() {
   return {
     title: "Forgot Password | Kickoff",
     description:
@@ -45,6 +45,6 @@ export async function generateMetadata() {
   };
 }
 
-export default async function page() {
+export default function page() {
   return <ForgotPasswordClientPage />;
 }

@@ -2,15 +2,9 @@
 
 import React from "react";
 import { useFormik } from "formik";
-import { z } from "zod";
-import { toFormikValidationSchema } from "zod-formik-adapter";
-import { Button } from "@heroui/react";
 import Link from "next/link";
 
-import Background from "../atoms/Background";
 import TextInput from "../elements/TextInput";
-import AuthTopContent from "../elements/AuthTopContent";
-import { useAuthLogin } from "../../hooks/useAuthLogin";
 
 const loginSchema = z.object({
   email: z
@@ -23,23 +17,15 @@ const loginSchema = z.object({
     .nonempty("Password is required"),
 });
 
-const LoginForm = () => {
-  const { handleLogin, loading } = useAuthLogin();
-
+const LoginForm = ({ onSubmit }) => {
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    validationSchema: toFormikValidationSchema(loginSchema),
+    validationSchema: loginSchema,
     onSubmit: async (values, { setSubmitting }) => {
-      try {
-        await handleLogin(values);
-      } catch (err) {
-        console.error("Login failed:", err);
-      } finally {
-        setSubmitting(false);
-      }
+      void onSubmit(values);
     },
   });
 
@@ -55,7 +41,6 @@ const LoginForm = () => {
 
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8  dark:bg-gray-900">
-      <Background className="absolute inset-0 z-0" />
       <div className="relative z-10 w-full max-w-md space-y-8 bg-white dark:bg-gray-800 rounded-2xl p-4 md:p-10 shadow-xl dark:shadow-xl dark:shadow-black/20">
         <AuthTopContent
           title="Welcome to Our Platform"
