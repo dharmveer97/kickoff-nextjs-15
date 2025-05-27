@@ -38,8 +38,6 @@ const config = {
   links: {
     twitter: "https://twitter.com/kickoff",
   },
-
-
 };
 
 export default config;
