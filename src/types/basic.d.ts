@@ -66,11 +66,7 @@ interface IconWithLabelProps {
   icon: string
   label: string
 }
-interface PaginationCompProps {
-  index: number
-  x: import('react-native-reanimated').SharedValue<number>
-  screenWidth: number
-}
+
 interface CheckboxGroupProps {
   name: string
   value: boolean
@@ -78,7 +74,6 @@ interface CheckboxGroupProps {
   touched?: boolean
   error?: string
   children: ReactNode
-  containerStyle?: import('react-native').ViewStyle
   textStyle?: TextStyle
   errorAlign?: 'left' | 'center'
 }
@@ -124,7 +119,6 @@ interface ListTileProps {
 
 interface MarkdownTextProps extends Omit<TextProps, 'children'> {
   text: string
-  style?: import('react-native').TextStyle
   color?: string
 }
 
