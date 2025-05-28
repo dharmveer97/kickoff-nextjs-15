@@ -1,10 +1,18 @@
-"use client";
+'use client'
 
-import React from "react";
-import { Button } from "@heroui/react";
-import Link from "next/link";
+import React from 'react'
 
-export default function EmptyState({ title, description, isLinkAble }) {
+import Link from 'next/link'
+
+export default function EmptyState({
+  title,
+  description,
+  isLinkAble,
+}: {
+  title: string
+  description: string
+  isLinkAble: boolean
+}) {
   return (
     <div className="text-center py-10">
       <svg
@@ -26,13 +34,9 @@ export default function EmptyState({ title, description, isLinkAble }) {
       <p className="mt-1 text-sm opacity-70">{description}</p>
       <div className="mt-6">
         {isLinkAble && (
-          <Link href="/inventory?status=available">
-            <Button variant="flat" color="primary" type="button">
-              Explore More
-            </Button>
-          </Link>
+          <Link href="/inventory?status=available">Explore More</Link>
         )}
       </div>
     </div>
-  );
+  )
 }

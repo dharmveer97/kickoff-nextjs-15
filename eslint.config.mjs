@@ -1,31 +1,55 @@
-import js from '@eslint/js';
-import react from "eslint-plugin-react";
-import eslintImport from "eslint-plugin-import";
-import nextEslintPlugin from "@next/eslint-plugin-next";
-import { FlatCompat } from "@eslint/eslintrc";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import prettierPlugin from 'eslint-plugin-prettier';
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { FlatCompat } from '@eslint/eslintrc'
+import js from '@eslint/js'
+import nextEslintPlugin from '@next/eslint-plugin-next'
+import eslintImport from 'eslint-plugin-import'
+import prettierPlugin from 'eslint-plugin-prettier'
+import react from 'eslint-plugin-react'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
+})
 
-// Define your custom rules here
-const customRules = {
+// Custom shared rules
+const sharedRules = {
   'react/no-unused-prop-types': 'error',
   'react/self-closing-comp': 'error',
   'no-console': ['warn', { allow: ['warn', 'error'] }],
-  'prettier/prettier': 'error',
-};
+  'prettier/prettier': [
+    'error',
+    {
+      trailingComma: 'all',
+      semi: false,
+      tabWidth: 2,
+      singleQuote: true,
+      printWidth: 80,
+      endOfLine: 'auto',
+      arrowParens: 'always',
+    },
+  ],
+  'import/order': [
+    'error',
+    {
+      groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+      'newlines-between': 'always',
+      alphabetize: { order: 'asc', caseInsensitive: true },
+      pathGroups: [
+        { pattern: 'react', group: 'external', position: 'before' },
+        { pattern: '@/**', group: 'internal', position: 'after' },
+      ],
+      pathGroupsExcludedImportTypes: ['react'],
+    },
+  ],
+}
 
-// TypeScript-specific rules that catch common issues
+// TypeScript-specific rules
 const typescriptRules = {
   '@typescript-eslint/no-unused-vars': 'error',
   '@typescript-eslint/no-floating-promises': 'error',
@@ -34,19 +58,29 @@ const typescriptRules = {
   '@typescript-eslint/no-explicit-any': 'warn',
   '@typescript-eslint/explicit-function-return-type': 'off',
   '@typescript-eslint/explicit-module-boundary-types': 'off',
-  // Required rules from eslint-plugin-import for TypeScript
-  'import/no-unresolved': 'off', // TypeScript handles this
+  '@typescript-eslint/no-empty-function': 'warn',
+  '@typescript-eslint/no-non-null-assertion': 'warn',
+  '@typescript-eslint/typedef': [
+    'error',
+    {
+      variableDeclaration: false,
+      variableDeclarationIgnoreFunction: true,
+      parameter: true,
+      propertyDeclaration: true,
+      memberVariableDeclaration: true,
+      arrowParameter: false,
+    },
+  ],
+  'import/no-unresolved': 'error',
   'import/named': 'error',
   'import/namespace': 'error',
   'import/default': 'error',
   'import/export': 'error',
-};
+}
 
-const eslintConfig = [
-  // Base JS configuration
+export default tseslint.config(
   js.configs.recommended,
 
-  // Add globals
   {
     languageOptions: {
       globals: {
@@ -54,48 +88,61 @@ const eslintConfig = [
         ...globals.node,
         ...globals.es2021,
       },
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+          impliedStrict: true,
+        },
+      },
     },
   },
 
-  // Register all plugins
   {
     plugins: {
       react,
       prettier: prettierPlugin,
       next: nextEslintPlugin,
       import: eslintImport,
+      '@typescript-eslint': tseslint.plugin,
     },
   },
 
-  // Next.js configuration (includes React rules)
-  ...compat.extends('next/core-web-vitals'),
+  // Add Next.js configurations here
+  ...compat.extends('next', 'next/core-web-vitals', 'next/typescript'),
 
-  // Apply custom rules to all files
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ['**/*.{js,ts,tsx,mjs,cjs}', '*.config.{js,ts,mjs,cjs}'],
+
     ignores: [
-      "node_modules/**",
-      ".next/**",
-      "dist/**",
-      "out/**",
-      "*.config.{js,mjs,cjs}",
-      "./sanity.types.ts",
+      'node_modules',
+      'public',
+      'bun.lock',
+      'package-lock.json',
+      '.next',
+      'dist',
     ],
     rules: {
-      ...customRules,
+      ...sharedRules,
+      // Add Next.js specific rules from the provided example
+      'react/no-unescaped-entities': 'off',
+      '@next/next/no-page-custom-font': 'off',
     },
   },
 
   {
-    files: ['**/*.{ts,tsx,js}'],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
         project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
         ecmaVersion: 'latest',
         sourceType: 'module',
         ecmaFeatures: {
           jsx: true,
+          impliedStrict: true,
         },
       },
     },
@@ -104,11 +151,19 @@ const eslintConfig = [
     },
   },
 
-  // Apply TypeScript ESLint recommended configs
   ...tseslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylistic,
   ...tseslint.configs.stylisticTypeChecked,
-];
 
-export default eslintConfig;
+  {
+    settings: {
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+      },
+    },
+  },
+)

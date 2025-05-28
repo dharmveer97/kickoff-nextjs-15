@@ -1,16 +1,16 @@
-import SetNewPasswordForm from "../../../../components/forms/SetNewPasswordForm";
-import config from "../../../../utils/config";
+import SetNewPasswordForm from '@/components/forms/SetNewPasswordForm'
+import config from '@/utils/config'
 
-export async function generateMetadata() {
+export function generateMetadata() {
   return {
     title: `Update Profile | ${config.siteName}`,
     description: `Manage your ${config.siteName} profile — update your personal information, contact details, and preferences securely.`,
     keywords: [
-      "update profile",
-      "edit profile",
+      'update profile',
+      'edit profile',
       `${config.siteName} account settings`,
-      "change user info",
-      "update contact details",
+      'change user info',
+      'update contact details',
     ],
     robots: {
       index: true,
@@ -21,8 +21,8 @@ export async function generateMetadata() {
       description: `Easily manage your account by updating your profile, contact info, and preferences on ${config.siteName}.`,
       url: `${config.siteUrl}/account/update-profile`,
       siteName: config.siteName,
-      type: "website",
-      locale: "en_US",
+      type: 'website',
+      locale: 'en_US',
       images: [
         {
           url: `${config.siteUrl}/images/logo.png`,
@@ -33,15 +33,15 @@ export async function generateMetadata() {
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: `Update Your Profile | ${config.siteName}`,
       description: `Edit your ${config.siteName} account info to keep your recovery experience personalized and up-to-date.`,
-      creator: "@TheKickoffretreat",
+      creator: '@TheKickoffretreat',
       images: [`${config.siteUrl}/images/logo.png`],
     },
-  };
+  }
 }
 
-export default async function page() {
-  return <SetNewPasswordForm />;
+export default function page() {
+  return <SetNewPasswordForm />
 }

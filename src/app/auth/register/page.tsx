@@ -1,16 +1,17 @@
-import SignupForm from "@/components/forms/SignUpForm";
-import config from "@/utils/config";
+import SignupForm from '@/components/forms/SignUpForm'
+import config from '@/utils/config'
+
 export function generateMetadata() {
   return {
     title: `Create Account | ${config.siteName}`,
     description:
-      "Join KickoffRetreat — Create your account to access powerful tools, personalized support, and exclusive content.",
+      'Join KickoffRetreat — Create your account to access powerful tools, personalized support, and exclusive content.',
     keywords: [
-      "sign up",
-      "register",
-      "create account",
-      "KickoffRetreat membership",
-      "new user",
+      'sign up',
+      'register',
+      'create account',
+      'KickoffRetreat membership',
+      'new user',
     ],
     robots: {
       index: true,
@@ -21,7 +22,7 @@ export function generateMetadata() {
       description: `Join ${config.siteName} — Sign up for personalized experiences and recovery tools.`,
       url: config.siteUrl,
       siteName: config.siteName,
-      type: "website",
+      type: 'website',
       images: [
         {
           url: `${config.siteUrl}/images/logo.png`,
@@ -32,14 +33,14 @@ export function generateMetadata() {
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: `Join ${config.siteName}`,
       description: `Create your ${config.siteName} account for a better mental health journey.`,
       images: [`${config.siteUrl}/images/logo.png`],
     },
-  };
+  }
 }
 
 export default function page() {
-  return <SignupForm />;
+  return <SignupForm />
 }
