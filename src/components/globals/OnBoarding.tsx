@@ -9,12 +9,12 @@ import { useSyncExternalStore } from 'react'
 
 import Link from 'next/link'
 
-const emptySubscribe = () => () => {
+const emptySubscribe: () => () => void = () => () => {
   //
 }
 
 export default function Onboarding({ description }: { description: string }) {
-  const target = useSyncExternalStore(
+  const target: string | undefined = useSyncExternalStore(
     emptySubscribe,
     () => (window.top === window ? undefined : '_blank'),
     () => '_blank',

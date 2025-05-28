@@ -1,5 +1,5 @@
 'use client'
-export const CartIcon = ({ ...props }) => {
+export function CartIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

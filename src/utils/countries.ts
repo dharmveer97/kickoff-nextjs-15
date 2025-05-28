@@ -1,4 +1,15 @@
-const countries = [
+const countries: (
+  | {
+      name: string
+      code: string
+      default?: undefined
+    }
+  | {
+      name: string
+      code: string
+      default: boolean
+    }
+)[] = [
   { name: 'Afghanistan', code: 'AF' },
   { name: 'Åland Islands', code: 'AX' },
   { name: 'Albania', code: 'AL' },

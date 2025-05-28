@@ -1,7 +1,4 @@
-import React from 'react'
-
-const ProfileUpdateForm = () => {
+'use client'
+export default function ProfileUpdateForm() {
   return <div>ProfileUpdateForm</div>
 }
-
-export default ProfileUpdateForm

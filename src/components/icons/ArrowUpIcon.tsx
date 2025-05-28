@@ -1,4 +1,4 @@
-export const ArrowUpIcon = ({ ...props }) => {
+export function ArrowUpIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

@@ -1,8 +1,8 @@
-const config = {
+const config: SiteConfig = {
   debug: process.env.NODE_ENV === 'development',
   siteName: 'Kickoff',
   name: 'Kickoff',
-  siteUrl: 'https:/Kickoff.com',
+  siteUrl: 'http://Kickoff.com',
   address: '491 Brimley Rd #16',
   telephone: '+12313',
   email: 'Kickoff@hotmail.com',
@@ -16,7 +16,7 @@ const config = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https:/kickoff.com',
+    url: 'http://kickoff.com',
     siteName: 'kickoff',
     description: 'kickoff',
     images: [
