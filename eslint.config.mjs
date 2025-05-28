@@ -63,12 +63,14 @@ const typescriptRules = {
   '@typescript-eslint/typedef': [
     'error',
     {
-      variableDeclaration: false,
-      variableDeclarationIgnoreFunction: true,
-      parameter: true,
-      propertyDeclaration: true,
-      memberVariableDeclaration: true,
-      arrowParameter: false,
+      variableDeclaration: true,      // enforce type annotation on variables (const, let)
+    variableDeclarationIgnoreFunction: false,
+    arrayDestructuring: false,
+    objectDestructuring: false,
+    parameter: false,
+    propertyDeclaration: false,
+    memberVariableDeclaration: false,
+    arrowParameter: false,
     },
   ],
   'import/no-unresolved': 'error',

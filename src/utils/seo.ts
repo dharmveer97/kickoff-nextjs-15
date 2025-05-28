@@ -2,7 +2,7 @@ import { truncate, get } from 'lodash'
 
 import config from './config'
 
-const urlForImage = () => {
+const urlForImage: () => void = () => {
   console.log('hello world')
 }
 
@@ -78,7 +78,7 @@ export function generateStaticPagesMetadata(data, path, type) {
         siteName: config.siteName,
         images,
         locale: 'en_US',
-        type: type || 'website',
+        type: type ?? 'website',
       },
 
       twitter: {
